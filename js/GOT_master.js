@@ -7,7 +7,10 @@
         houseVideo = document.querySelector('.house-video'),
         bannerImages = document.querySelector('#houseImages'),
         houseName = document.querySelector("#house-name"),
-        houseInfo = document.querySelector(".house-info");
+        houseInfo = document.querySelector(".house-info"),
+        pauseButton = document.querySelector(".fa-pause-circle"),
+        playButton = document.querySelector(".fa-play-circle"),
+        rewindButton = document.querySelector(".fa-backward");
 
         //houseData is a multidimensional array (arrays within arryas!) Data container can hold anything - in this casem each
         //index or entry holds another, smaller container with 2 indexes - 1 with the house name, one with the house data.
@@ -29,9 +32,41 @@
     ["arryn", `House Arryn of the Eyrie is one of the Great Houses of Westeros. It has ruled over the Vale of Arryn for millennia, originally as the Kings of Mountain and Vale and more recently as Lords Paramount of the Vale and Wardens of the East under the Targaryen kings and Baratheon-Lannister kings. The nominal head of House Arryn is Robin Arryn, the Lord of the Eyrie, with his stepfather Petyr Baelish acting as Lord Protector until he reaches the age of majority.`]
   ];
 
+  //pause the video on a click
+
+  function pauseVideo() {
+    //pause the video when the button is clicked
+    houseVideo.pause()
+  }
+
+  function playVideo() {
+    houseVideo.play()
+  }
+
+  function rewindVideo() {
+    houseVideo.loop()
+  }
+
+  //write the other functions for the custom video controls (play, colume, control, time counter, progress bar scrubber, etc.)
+
   function popLightBox() {
   //make the lightbox show up
     lightBox.classList.add('show-lightbox');
+
+    //grab a reference to the current video via the className object
+    //use the className property, split it into its separate words, and
+    //then get the last word -> [1] -> that will always be the house name.
+    let houseName = this.className.split(" ")[1];
+
+    //capitalize the first letter with JS string methods
+    houseName = houseName.charAt(0).toUpperCase() + houseName.slice(1);
+
+    //use js string interpolation to build the path to the target video
+    let videoPath = `video/House-${houseName}.mp4`;
+
+    //load this new video videoPath
+    houseVideo.src = videoPath;
+    houseVideo.load();
 
     houseVideo.play();
 }
@@ -62,10 +97,12 @@ function animateBanners() {
   houseInfo.textContent = houseData[multiplier][1];
 }
 
-  // sigils.forEach(sigil => sigil.addEventListener("click", popLightBox));
-  sigils.forEach(sigil => sigil.addEventListener("click", animateBanners));
+  sigils.forEach(sigil => sigil.addEventListener("click", popLightBox));
+  //sigils.forEach(sigil => sigil.addEventListener("click", animateBanners));
 
   closeButton.addEventListener("click", closeLightBox);
-
   houseVideo.addEventListener('ended', closeLightBox);
+  pauseButton.addEventListener("click", pauseVideo);
+  playButton.addEventListener("click", playVideo);
+  rewindButton.addEventListener("click", rewindVideo);
 })();
