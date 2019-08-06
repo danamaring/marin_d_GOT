@@ -63,16 +63,18 @@
 
   function popLightBox() {
   //make the lightbox show up
+  let currentHouse = this.className.split(" ")[1];
+
     setTimeout(function() {
       lightBox.classList.add('show-lightbox');
 
       //grab a reference to the current video via the className object
       //use the className property, split it into its separate words, and
       //then get the last word -> [1] -> that will always be the house name.
-      let houseName = this.className.split(" ")[1];
+      //debugger;
 
       //capitalize the first letter with JS string methods
-      houseName = houseName.charAt(0).toUpperCase() + houseName.slice(1);
+      let houseName = currentHouse.charAt(0).toUpperCase() + currentHouse.slice(1);
 
       //use js string interpolation to build the path to the target video
       let videoPath = `video/House-${houseName}.mp4`;
