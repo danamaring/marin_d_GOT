@@ -33,11 +33,19 @@ main {
 	height:360px;
 	background-color:grey;
 	margin:0 auto;
-	/*overflow:hidden;*/
+	overflow:hidden;
 }
 
-#houseImages { position:relative; width:4000px; transition: all .5s; }
+#houseImages { position:relative; width:6000px; transition: all .5s; }
 #houseImages img { float:left; }
+
+.house-info {
+  color: white;
+  width: 75%;
+  font-size: 1.5em;
+  line-height: 1.5;
+  margin: 10px auto 0 auto;
+}
 
 #bottomNav { margin-top:30px; }
 
@@ -80,6 +88,15 @@ main {
 
 .arryn { background-position:-253px -54px; }
 .arryn:hover { background-position:-253px 0px; }
+
+.targayen { background-position:-303px -54px; }
+.targayen:hover { background-position:-303px 0px; }
+
+.frey { background-position:-354px -54px; }
+.frey:hover { background-position:-354px 0px; }
+
+.tyrell { background-position:-404px -54px; }
+.tyrell:hover { background-position:-404px 0px; }
 /* ----- end image sprite ----- */
 
 /* ----- classes for transitions ----- */
@@ -116,10 +133,28 @@ main {
   color: white;
 }
 
+/* close lightbox control */
+.fa-times-circle {
+  margin-right: 9%;
+  margin-top: 1%;
+  font-size: 1.5em;
+}
+
+/* video styling */
 
 video {
-	width: 85%;
-	margin: 10% auto 10% auto;
+	width: 58%;
+	margin: 5% auto 0 auto;
 	border: thin solid #949393;
   display: block;
+}
+
+.video-controls i {
+  color: white;
+  font-size: 2em;
+  cursor: pointer;
+}
+
+.fas {
+  padding: 0 5% 0 0;
 }
