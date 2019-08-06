@@ -30,57 +30,59 @@
     //houseData[4][0] is "lannister", houseData [4][1] is the house data
     ["greyjoy", `House Greyjoy of Pyke is one of the Great Houses of Westeros. It rules over the Iron Islands, a harsh and bleak collection of islands off the west coast of Westeros, from the castle at Pyke. The head of the house is the Lord Reaper of Pyke.House Greyjoy's sigil is traditionally a golden kraken on a black field. Their house words are "We Do Not Sow," although the phrase "What Is Dead May Never Die" is also closely associated with House Greyjoy and their bannermen, as they are associated with the faith of the Drowned God. `],
     //houseData[5][0] is "lannister", houseData [5][1] is the house data
-    ["arryn", `House Arryn of the Eyrie is one of the Great Houses of Westeros. It has ruled over the Vale of Arryn for millennia, originally as the Kings of Mountain and Vale and more recently as Lords Paramount of the Vale and Wardens of the East under the Targaryen kings and Baratheon-Lannister kings. The nominal head of House Arryn is Robin Arryn, the Lord of the Eyrie, with his stepfather Petyr Baelish acting as Lord Protector until he reaches the age of majority.`]
+    ["arryn", `House Arryn of the Eyrie is one of the Great Houses of Westeros. It has ruled over the Vale of Arryn for millennia, originally as the Kings of Mountain and Vale and more recently as Lords Paramount of the Vale and Wardens of the East under the Targaryen kings and Baratheon-Lannister kings. The nominal head of House Arryn is Robin Arryn, the Lord of the Eyrie, with his stepfather Petyr Baelish acting as Lord Protector until he reaches the age of majority.`],
     //houseData[6][0] is "lannister", houseData [5][1] is the house data
-    ["targayen", `House Targaryen of Dragonstone is a Great House of Westeros and was the ruling royal House of the Seven Kingdoms for three centuries since it conquered and unified the realm, before it was deposed during Robert's Rebellion and House Baratheon replaced it as the new royal House. The few surviving Targaryens fled into exile to the Free Cities of Essos across the Narrow Sea. Currently based on Dragonstone off of the eastern coast of Westeros, House Targaryen seeks to retake the Seven Kingdoms from House Lannister, who formally replaced House Baratheon as the royal House following the destruction of the Great Sept of Baelor.`]
+    ["targayen", `House Targaryen of Dragonstone is a Great House of Westeros and was the ruling royal House of the Seven Kingdoms for three centuries since it conquered and unified the realm, before it was deposed during Robert's Rebellion and House Baratheon replaced it as the new royal House. The few surviving Targaryens fled into exile to the Free Cities of Essos across the Narrow Sea. Currently based on Dragonstone off of the eastern coast of Westeros, House Targaryen seeks to retake the Seven Kingdoms from House Lannister, who formally replaced House Baratheon as the royal House following the destruction of the Great Sept of Baelor.`],
     //houseData[7][0] is "lannister", houseData [5][1] is the house data
-    ["frey", `House Frey of the Twins was the Great House of the Riverlands, having gained their position for their treachery against their former liege lords, House Tully, who were stripped of all their lands and titles for their rebellion against the Iron Throne; House Tully had supported the independence movement for the Kingdom of the North. The current head of the house is unknown following the assassinations of Lord Walder Frey and two of his sons, Lothar Frey and Walder Rivers, by the vengeful Arya Stark. This is made more complex by the subsequent assassination of all the male Freys soon after.`]
+    ["frey", `House Frey of the Twins was the Great House of the Riverlands, having gained their position for their treachery against their former liege lords, House Tully, who were stripped of all their lands and titles for their rebellion against the Iron Throne; House Tully had supported the independence movement for the Kingdom of the North. The current head of the house is unknown following the assassinations of Lord Walder Frey and two of his sons, Lothar Frey and Walder Rivers, by the vengeful Arya Stark. This is made more complex by the subsequent assassination of all the male Freys soon after.`],
     //houseData[8][0] is "lannister", houseData [5][1] is the house data
     ["tyrell", `House Tyrell of Highgarden is an extinct Great House of Westeros. It ruled over the Reach, a vast, fertile, and heavily-populated region of southwestern Westeros, from their castle-seat of Highgarden as Lords Paramount of the Reach and Wardens of the South after taking control of the region from House Gardener during the Targaryen conquest.`]
   ];
 
 //VIDEO CONTROLS
-  // function pauseVideo() {
-  //   //pause the video when the button is clicked
-  //   houseVideo.pause()
-  // }
-  // 
-  // function playVideo() {
-  //   houseVideo.playbackRate = 1;
-  //   houseVideo.play()
-  // }
-  //
-  // function forwardVideo() {
-  //   houseVideo.playbackRate = 7;
-  // }
-  //
-  // function replayVideo() {
-  //   houseVideo.currentTime = 0;
-  //   houseVideo.play()
-  // }
+  function pauseVideo() {
+    //pause the video when the button is clicked
+    houseVideo.pause()
+  }
+
+  function playVideo() {
+    houseVideo.playbackRate = 1;
+    houseVideo.play()
+  }
+
+  function forwardVideo() {
+    houseVideo.playbackRate = 7;
+  }
+
+  function replayVideo() {
+    houseVideo.currentTime = 0;
+    houseVideo.play()
+  }
 
   //write the other functions for the custom video controls (play, colume, control, time counter, progress bar scrubber, etc.)
 
   function popLightBox() {
   //make the lightbox show up
-    lightBox.classList.add('show-lightbox');
+    setTimeout(function() {
+      lightBox.classList.add('show-lightbox');
 
-    //grab a reference to the current video via the className object
-    //use the className property, split it into its separate words, and
-    //then get the last word -> [1] -> that will always be the house name.
-    let houseName = this.className.split(" ")[1];
+      //grab a reference to the current video via the className object
+      //use the className property, split it into its separate words, and
+      //then get the last word -> [1] -> that will always be the house name.
+      let houseName = this.className.split(" ")[1];
 
-    //capitalize the first letter with JS string methods
-    houseName = houseName.charAt(0).toUpperCase() + houseName.slice(1);
+      //capitalize the first letter with JS string methods
+      houseName = houseName.charAt(0).toUpperCase() + houseName.slice(1);
 
-    //use js string interpolation to build the path to the target video
-    let videoPath = `video/House-${houseName}.mp4`;
+      //use js string interpolation to build the path to the target video
+      let videoPath = `video/House-${houseName}.mp4`;
 
-    //load this new video videoPath
-    houseVideo.src = videoPath;
-    houseVideo.load();
+      //load this new video videoPath
+      houseVideo.src = videoPath;
+      houseVideo.load();
 
-    houseVideo.play();
+      houseVideo.play();
+    }, 1250);
 }
 
   function closeLightBox (event) {
@@ -110,7 +112,7 @@ function animateBanners() {
 }
 
   sigils.forEach(sigil => sigil.addEventListener("click", popLightBox));
-  //sigils.forEach(sigil => sigil.addEventListener("click", animateBanners));
+  sigils.forEach(sigil => sigil.addEventListener("click", animateBanners));
 
   closeButton.addEventListener("click", closeLightBox);
   houseVideo.addEventListener('ended', closeLightBox);
