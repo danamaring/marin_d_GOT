@@ -32,7 +32,7 @@
     //houseData[5][0] is "lannister", houseData [5][1] is the house data
     ["arryn", `House Arryn of the Eyrie is one of the Great Houses of Westeros. It has ruled over the Vale of Arryn for millennia, originally as the Kings of Mountain and Vale and more recently as Lords Paramount of the Vale and Wardens of the East under the Targaryen kings and Baratheon-Lannister kings. The nominal head of House Arryn is Robin Arryn, the Lord of the Eyrie, with his stepfather Petyr Baelish acting as Lord Protector until he reaches the age of majority.`],
     //houseData[6][0] is "lannister", houseData [5][1] is the house data
-    ["targayen", `House Targaryen of Dragonstone is a Great House of Westeros and was the ruling royal House of the Seven Kingdoms for three centuries since it conquered and unified the realm, before it was deposed during Robert's Rebellion and House Baratheon replaced it as the new royal House. The few surviving Targaryens fled into exile to the Free Cities of Essos across the Narrow Sea. Currently based on Dragonstone off of the eastern coast of Westeros, House Targaryen seeks to retake the Seven Kingdoms from House Lannister, who formally replaced House Baratheon as the royal House following the destruction of the Great Sept of Baelor.`],
+    ["targaryen", `House Targaryen of Dragonstone is a Great House of Westeros and was the ruling royal House of the Seven Kingdoms for three centuries since it conquered and unified the realm, before it was deposed during Robert's Rebellion and House Baratheon replaced it as the new royal House. The few surviving Targaryens fled into exile to the Free Cities of Essos across the Narrow Sea. Currently based on Dragonstone off of the eastern coast of Westeros, House Targaryen seeks to retake the Seven Kingdoms from House Lannister, who formally replaced House Baratheon as the royal House following the destruction of the Great Sept of Baelor.`],
     //houseData[7][0] is "lannister", houseData [5][1] is the house data
     ["frey", `House Frey of the Twins was the Great House of the Riverlands, having gained their position for their treachery against their former liege lords, House Tully, who were stripped of all their lands and titles for their rebellion against the Iron Throne; House Tully had supported the independence movement for the Kingdom of the North. The current head of the house is unknown following the assassinations of Lord Walder Frey and two of his sons, Lothar Frey and Walder Rivers, by the vengeful Arya Stark. This is made more complex by the subsequent assassination of all the male Freys soon after.`],
     //houseData[8][0] is "lannister", houseData [5][1] is the house data
@@ -63,16 +63,18 @@
 
   function popLightBox() {
   //make the lightbox show up
+  let currentHouse = this.className.split(" ")[1];
+
     setTimeout(function() {
       lightBox.classList.add('show-lightbox');
 
       //grab a reference to the current video via the className object
       //use the className property, split it into its separate words, and
       //then get the last word -> [1] -> that will always be the house name.
-      let houseName = this.className.split(" ")[1];
+      //debugger;
 
       //capitalize the first letter with JS string methods
-      houseName = houseName.charAt(0).toUpperCase() + houseName.slice(1);
+      let houseName = currentHouse.charAt(0).toUpperCase() + currentHouse.slice(1);
 
       //use js string interpolation to build the path to the target video
       let videoPath = `video/House-${houseName}.mp4`;
